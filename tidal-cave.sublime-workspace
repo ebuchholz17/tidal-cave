@@ -1,0 +1,363 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"path",
+				"pathsToCell"
+			],
+			[
+				"ad",
+				"adjacentCell"
+			],
+			[
+				"cellIs",
+				"cellIsInPath"
+			],
+			[
+				"Ga",
+				"GameSettings"
+			],
+			[
+				"_c",
+				"_checkMark"
+			],
+			[
+				"_cate",
+				"_categoryTextField"
+			],
+			[
+				"_ca",
+				"_categoryTextField"
+			],
+			[
+				"_l",
+				"_lineLayer"
+			],
+			[
+				"_lett",
+				"_letterTextField"
+			],
+			[
+				"sc",
+				"screenWidth"
+			],
+			[
+				"scr",
+				"screenHeight"
+			],
+			[
+				"_ga",
+				"_gameRef"
+			],
+			[
+				"_board",
+				"_boardView"
+			],
+			[
+				"ra",
+				"randomizeArray"
+			],
+			[
+				"In",
+				"InputPriority"
+			],
+			[
+				"onClickQ",
+				"onClickQuitHandler"
+			],
+			[
+				"onClickOn",
+				"onClickContinueHandler"
+			],
+			[
+				"game",
+				"gameobjects"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"jshint",
+				"JSHint"
+			],
+			[
+				"package control in",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"gulp",
+			"npm install -g gulp",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Libraries/Documents/Programming/tidal-cave"
+	],
+	"file_history":
+	[
+		"/D/Libraries/Documents/Programming/block-maze/generator/BlockMazePuzzleGenerator.js",
+		"/D/Libraries/Documents/Programming/block-maze/generator/generator.js",
+		"/D/Libraries/Documents/Programming/block-maze/generator/BlockMazePuzzleFileWriter.js",
+		"/D/Libraries/Documents/Programming/block-maze/generator/BlockMazeDynamicGenerator.js",
+		"/D/Libraries/Documents/Programming/block-maze/generator/puzzles/0001.xml",
+		"/D/Libraries/Documents/Programming/block-maze/generator/puzzles/0002.xml",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/Plain text.sublime-settings",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/scenes/GameScene.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/phrase-flow/view/GameView.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/scenes/BootScene.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/scenes/PreloaderScene.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/phrase-flow/view/gameobjects/SelectedLettersLine.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/phrase-flow/view/gameobjects/LetterCell.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/assets/puzzles/013.xml",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/assets/puzzles/001.xml",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/phrase-flow/view/gameobjects/LineSegment.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/src/js/phrase-flow/view/gameobjects/LetterGrid.js",
+		"/D/Libraries/Documents/Programming/phrase-flow/.jshintrc",
+		"/D/Libraries/Documents/Programming/sudoku-diagonal-webgl/src/index.html",
+		"/D/Libraries/Documents/Programming/sudoku-diagonal-webgl/src/assets/puzzles/puzzleTest151216.xml",
+		"/D/Libraries/Documents/Programming/sudoku-diagonal-webgl/src/js/gameLogic/parser/SudokuInfoParser.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/HowToScorePage.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/BoardView.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/GameProperties.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/popups/GameOverPopup.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/UITileVIew.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/popups/HelpPopup.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/GameHUD.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/assets/texts/fr-FR.txt",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/assets/texts/it-IT.txt",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/assets/texts/es-ES.txt",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/assets/texts/en-US.txt",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/assets/texts/de-DE.txt",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/States/Preloader.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/TilePointsItem.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/effects/ScoreBurst.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/AnimationManager.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/model/Board.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/Mahjongg.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/effects/PetalDropper.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/popups/CreditsPopup.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/popups/OptionsPopup.js",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/GameUI.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/SimpleButton.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/LabelButton.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/libs/phaser.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/css/main.css",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/model/Tile.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/.jshintrc",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/TileView.js",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/gulpfile.js",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/gulp-buildAndMinify.sublime-build",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/gulp-build.sublime-build",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"-*/mahjongg-classic-webgl/node_modules/*,-*mahjongg-classic-webgl/dist/*,-*mahjongg-classic-webgl/cordova/*",
+			"-*/node_modules-*,-*/dist/*,-*/cordova/*",
+			"-*/node_modules-*",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"BlockMazePuzzleGenerator",
+			"y",
+			"x",
+			"QQQ",
+			"_timeUntilShowHint",
+			"TIME_UNTIL_REVEAL_HINT",
+			"QQQ",
+			"TODO: local",
+			"Circle",
+			"Dragon",
+			"Circle",
+			"Season",
+			"Circle",
+			"Flower",
+			"Circle",
+			"Wind",
+			"Circle",
+			"Wind",
+			"initializeAndAppear",
+			"\");\n",
+			"OptionsPopup",
+			"SimpleButton",
+			"onBackingScrimMouseUpEventHandler",
+			"_quitButton",
+			"this._super",
+			"this._super\n",
+			"();\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"BlockMazeDynamicGenerator",
+			"CreditsPopup",
+			"Popup.prototype"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 218.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.gulp_output":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "Packages/User/gulp-default.sublime-build",
+	"project": "tidal-cave.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 233.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
