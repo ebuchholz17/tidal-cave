@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"_game",
+				"_gameContainer"
+			],
+			[
 				"path",
 				"pathsToCell"
 			],
@@ -79,6 +83,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/js/states/Preloader.js",
+			"settings":
+			{
+				"buffer_size": 701,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/model/LevelParser.js",
+			"settings":
+			{
+				"buffer_size": 188,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/states/Game.js",
+			"settings":
+			{
+				"buffer_size": 823,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -136,10 +164,25 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Libraries/Documents/Programming/tidal-cave"
+		"/D/Libraries/Documents/Programming/tidal-cave",
+		"/D/Libraries/Documents/Programming/tidal-cave/src",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/assets",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/assets/images",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/css",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/js",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/js/model",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/js/states"
 	],
 	"file_history":
 	[
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/index.html",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/js/main.min.js",
+		"/D/Libraries/Documents/Programming/tidal-cave/gulpfile.js",
+		"/D/Libraries/Documents/Programming/tidal-cave/package.json",
+		"/D/Libraries/Documents/Programming/tidal-cave/src/css/main.min.css",
+		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/css/main.css",
 		"/D/Libraries/Documents/Programming/block-maze/generator/BlockMazePuzzleGenerator.js",
 		"/D/Libraries/Documents/Programming/block-maze/generator/generator.js",
 		"/D/Libraries/Documents/Programming/block-maze/generator/BlockMazePuzzleFileWriter.js",
@@ -188,15 +231,12 @@
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/SimpleButton.js",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/ui/LabelButton.js",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/libs/phaser.js",
-		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/css/main.css",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/model/Tile.js",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/.jshintrc",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/src/js/candymahjongg/view/TileView.js",
 		"/D/Libraries/Documents/Programming/mahjongg-classic-webgl/gulpfile.js",
-		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
 		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/gulp-buildAndMinify.sublime-build",
-		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/gulp-build.sublime-build",
-		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings"
+		"/C/Users/ebuch_000/AppData/Roaming/Sublime Text 3/Packages/User/gulp-build.sublime-build"
 	],
 	"find":
 	{
@@ -265,8 +305,95 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/js/states/Preloader.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								605,
+								605
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/js/model/LevelParser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/js/states/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								628,
+								628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
