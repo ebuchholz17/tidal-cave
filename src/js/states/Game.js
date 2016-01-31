@@ -2,6 +2,8 @@ var LevelParser = require("../model/LevelParser");
 var TileMapView = require("../view/TileMapView");
 var Player = require("../view/Player");
 var Monster = require("../view/Monster");
+var Attack = require("../view/Attack");
+var FlyAwayText = require("../view/FlyAwayText");
 
 var Game = function () {
     "use strict";
@@ -23,6 +25,9 @@ Game.prototype = {
 
     create: function () {
         "use strict";
+
+    this._monsters = [];
+    this._camera = new Phaser.Point(120, 72);
         document.getElementById("game_preloader").style.visibility = "hidden";
         this._gameRef = this.game;
         this._gameRef.stage.smoothed = false;
@@ -55,42 +60,152 @@ Game.prototype = {
         for (var i = 0; i < this._oneMonsters.length; ++i) {
             monster = new Monster(this._gameRef);
             monster.init("grub");
+            monster.onDamage.add(this.onMonsterDamage, this);
+            monster.onDeath.add(this.onMonsterDeath, this);
             this._levelContainer.addChild(monster);
             this._monsters.push(monster);
             monster._pos.x = this._oneMonsters[i].x;
             monster._pos.y = this._oneMonsters[i].y;
 
             monster.ID = id++;
-            monster.Health = 10;
-            monster.XP = 10;
+            monster.Damage = 1;
+            monster.HP = 3;
+            monster.XP = 1;
         }
         for (i = 0; i < this._twoMonsters.length; ++i) {
             monster = new Monster(this._gameRef);
             monster.init("grub2");
+            monster.onDamage.add(this.onMonsterDamage, this);
+            monster.onDeath.add(this.onMonsterDeath, this);
             this._levelContainer.addChild(monster);
             this._monsters.push(monster);
             monster._pos.x = this._twoMonsters[i].x;
             monster._pos.y = this._twoMonsters[i].y;
 
             monster.ID = id++;
-            monster.Health = 10;
-            monster.XP = 10;
+            monster.Damage = 4;
+            monster.HP = 20;
+            monster.XP = 3;
         }
         for (i = 0; i < this._threeMonsters.length; ++i) {
             monster = new Monster(this._gameRef);
             monster.init("grub3");
+            monster.onDamage.add(this.onMonsterDamage, this);
+            monster.onDeath.add(this.onMonsterDeath, this);
             this._levelContainer.addChild(monster);
             this._monsters.push(monster);
             monster._pos.x = this._threeMonsters[i].x;
             monster._pos.y = this._threeMonsters[i].y;
 
             monster.ID = id++;
-            monster.Health = 10;
-            monster.XP = 10;
+            monster.Damage = 10;
+            monster.HP = 48;
+            monster.XP = 8;
         }
 
-        this._player._pos.x = 240;
-        this._player._pos.y = 136;
+        this._player.onAttack.add(this.onPlayerAttack, this);
+        this._player.onDamage.add(this.onPlayerDamage, this);
+        this._player.onDeath.add(this.onPlayerDeath, this);
+        this._player.onDeathComplete.add(this.onPlayerDeathComplete, this);
+        this._player.onLevelUp.add(this.onPlayerLevelUp, this);
+
+
+        this._playerLevelText = new Phaser.BitmapText(this._gameRef, 4, 1, "font", "Level: 1", 16);
+        this._playerHPText = new Phaser.BitmapText(this._gameRef, 4, 13, "font", "HP: " + Math.max(this._player.HP, 0) + "/" + this._player.MaxHP, 16);
+        this._playerXPText = new Phaser.BitmapText(this._gameRef, 4, 25, "font", "XP: " + Math.max(this._player.XP, 0) + "/" + this._player.NextXP, 16);
+
+
+        this._gameContainer.addChild(this._playerLevelText);
+        this._gameContainer.addChild(this._playerHPText);
+        this._gameContainer.addChild(this._playerXPText);
+    },
+
+    onPlayerAttack: function (playerPos, scale) {
+        "use strict";
+        var attack = new Attack(this._gameRef);
+        attack.onHit.add(this.onAttackHit, this);
+        attack.init(playerPos);
+        attack.x = playerPos.x;
+        attack.y = playerPos.y;
+        attack.scale.x = scale;
+        this._levelContainer.addChild(attack);
+    },
+
+    onAttackHit: function (rekt, attack) {
+        "use strict";
+        attack.onHit.remove(this.onAttackHit, this);
+        for (var i = 0; i < this._monsters.length; ++i) {
+            if (!this._monsters[i].Dead && rekt.intersects(this._monsters[i]._hurtBox)) {
+                this._monsters[i].doDamage(this._player.Damage, this._player._pos);
+            }
+        }
+    },
+    onPlayerDamage: function (damage) {
+        "use strict";
+        var flyAwayText = new FlyAwayText(this._gameRef);
+        flyAwayText.init("" + damage, 0xff0000);
+        flyAwayText.x = this._player.x;
+        flyAwayText.y = this._player.y;
+        this._levelContainer.addChild(flyAwayText);
+
+        this._playerHPText.text = "HP: " + Math.max(this._player.HP, 0) + "/" + this._player.MaxHP;
+    },
+    onPlayerDeath: function () {
+        "use strict";
+        this._player.deathAnimation();
+    },
+    onPlayerDeathComplete: function () {
+        "use strict";
+        this._player.onAttack.remove(this.onPlayerAttack, this);
+        this._player.onDamage.remove(this.onPlayerDamage, this);
+        this._player.onDeath.remove(this.onPlayerDeath, this);
+        this._player.onDeathComplete.remove(this.onPlayerDeathComplete, this);
+        for (var i = 0; i < this._monsters.length; ++i) {
+            this._monsters[i].onDamage.remove(this.onMonsterDamage, this);
+            this._monsters[i].onDeath.remove(this.onMonsterDeath, this);
+        }
+
+        this._gameRef.state.restart();
+    },
+    onPlayerLevelUp: function () {
+        "use strict";
+        this._playerHPText.text = "HP: " + Math.max(this._player.HP, 0) + "/" + this._player.MaxHP;
+        this._playerXPText.text = "XP: " + Math.max(this._player.XP, 0) + "/" + this._player.NextXP;
+        this._playerLevelText.text = "Level: " + this._player.Level;
+
+        var flyAwayText = new FlyAwayText(this._gameRef);
+        flyAwayText.init("LEVEL UP", 0x00ff00);
+        flyAwayText.x = this._player.x;
+        flyAwayText.y = this._player.y;
+        this._levelContainer.addChild(flyAwayText);
+    },
+
+
+    onMonsterDamage: function (damage, monster) {
+        "use strict";
+        var flyAwayText = new FlyAwayText(this._gameRef);
+        flyAwayText.init("" + damage, 0xffffff);
+        flyAwayText.x = monster.x;
+        flyAwayText.y = monster.y;
+        this._levelContainer.addChild(flyAwayText);
+    },
+    onMonsterDeath: function (monster) {
+        "use strict";
+        monster.onDamage.remove(this.onMonsterDamage, this);
+        monster.onDeath.remove(this.onMonsterDeath, this);
+        monster.deathAnimation();
+
+        var flyAwayText = new FlyAwayText(this._gameRef);
+        flyAwayText.init("XP: " + monster.XP, 0x00ff00);
+        flyAwayText.x = this._player.x;
+        flyAwayText.y = this._player.y;
+        this._levelContainer.addChild(flyAwayText);
+
+        this._player.XP += monster.XP;
+        this._playerXPText.text = "XP: " + Math.max(this._player.XP, 0) + "/" + this._player.NextXP;
+        if (this._player.XP >= this._player.NextXP) {
+            this._player.levelUp();
+        }
     },
 
     update: function () {
@@ -98,17 +213,32 @@ Game.prototype = {
 
         var dt = this._gameRef.time.physicsElapsed;
         this._player.processInput(dt);
-        this._player.updateMovement(dt);
-        this._player.checkMapCollisions(this._tileMapModel);
-        this._player.updateAnimation();
-        this._camera.x = this._player.x;
-        this._camera.y = this._player.y;
-
         for (var i = 0; i < this._monsters.length; ++i) {
             this._monsters[i].processAI(dt);
+        }
+        this._player.updateMovement(dt);
+        for (var i = 0; i < this._monsters.length; ++i) {
             this._monsters[i].updateMovement(dt);
+        }
+        this._player.checkMapCollisions(this._tileMapModel);
+        for (var i = 0; i < this._monsters.length; ++i) {
             this._monsters[i].checkMapCollisions(this._tileMapModel);
         }
+        this._player.updateAnimation();
+        if (!this._player.Dead) {
+        this._camera.x = this._player.x;
+        this._camera.y = this._player.y;
+        }
+
+        if (!this._player.Invincible) {
+            for (var i = 0; i < this._monsters.length; ++i) {
+                if (!this._monsters[i].Dead && this._monsters[i]._hitBox.intersects(this._player.HurtBox)) {
+                    this._player.doDamage(this._monsters[i].Damage);
+                    break;
+                }
+            }
+        }
+        
 
         this._levelContainer.x = -this._camera.x + 120;
         this._levelContainer.y = -this._camera.y + 72;

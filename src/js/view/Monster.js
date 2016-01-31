@@ -24,6 +24,14 @@ var Monster = function (game) {
     this.ID = -1;
     this.Health = 10;
     this.XP = 10;
+    this.onDamage = new Phaser.Signal();
+
+    this.Dead = false;
+    this.onDeath = new Phaser.Signal();
+
+    this._boxOffset = new Phaser.Point(-6, 0);
+    this._hitBox = new Phaser.Rectangle(0, 0, 14, 8);
+    this._hurtBox = new Phaser.Rectangle(0, 0, 14, 8);
 };
 module.exports = Monster;
 Monster.prototype = Object.create(Phaser.Group.prototype);
@@ -84,6 +92,10 @@ Monster.prototype.updateMovement = function (dt) {
 
     this.x = this._pos.x;
     this.y = this._pos.y;
+    this._hitBox.x = this.x  + this._boxOffset.x;
+    this._hitBox.y = this.y  + this._boxOffset.y;
+    this._hurtBox.x = this.x + this._boxOffset.x;
+    this._hurtBox.y = this.y + this._boxOffset.y;
 };
 
 Monster.prototype.checkMapCollisions = function (tileMapModel) {
@@ -92,4 +104,37 @@ Monster.prototype.checkMapCollisions = function (tileMapModel) {
 
     this.x = this._pos.x;
     this.y = this._pos.y;
+    this._hitBox.x = this.x + this._boxOffset.x;
+    this._hitBox.y = this.y + this._boxOffset.y;
+    this._hurtBox.x = this.x + this._boxOffset.x;
+    this._hurtBox.y = this.y + this._boxOffset.y;
+};
+
+Monster.prototype.doDamage = function (damage, playerPos) {
+    "use strict";
+    if (damage !== undefined) {
+        this.HP -= damage;
+
+        this.onDamage.dispatch(damage, this);
+
+        if (this.HP <= 0) {
+            this.Dead = true;
+            this.onDeath.dispatch(this);
+        }
+    }
+
+    this._velocity.y = -75;
+    this._movementProperties.OnGround = false;
+    if (playerPos.x > this.x) {
+        this._velocity.x = -75;
+    }
+    else {
+        this._velocity.x = 75;
+    }
+};
+Monster.prototype.deathAnimation = function () {
+    "use strict";
+    var deathTween = this._gameRef.add.tween(this);
+    deathTween.to({alpha:0}, 500, Phaser.Easing.Linear.None);
+    deathTween.start();
 };
