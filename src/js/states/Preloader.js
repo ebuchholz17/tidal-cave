@@ -15,6 +15,7 @@ Preloader.prototype = {
         this.game.scale.refresh();
 
         this.load.text("levelData", "../../assets/levels/1.txt");
+        this.load.text("actorData", "../../assets/levels/a.txt");
 
         this.load.image("bg", "../../assets/images/bg.png");
         this.load.image("waves", "../../assets/images/waves.png");
@@ -40,6 +41,9 @@ Preloader.prototype = {
         this.load.spritesheet("dog-green", "../../assets/images/character/dog-green.png", 16, 16);
         this.load.spritesheet("dog-blue", "../../assets/images/character/dog-blue.png", 16, 16);
         this.load.spritesheet("attack", "../../assets/images/character/attack.png", 16, 16);
+        this.load.spritesheet("grub", "../../assets/images/character/grub.png", 16, 16);
+        this.load.spritesheet("grub2", "../../assets/images/character/grub2.png", 16, 16);
+        this.load.spritesheet("grub3", "../../assets/images/character/grub3.png", 16, 16);
 
         this.game.input.keyboard.addKeyCapture(Phaser.KeyCode.DOWN);
         this.game.input.keyboard.addKeyCapture(Phaser.KeyCode.UP);

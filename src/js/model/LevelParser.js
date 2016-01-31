@@ -36,6 +36,33 @@ LevelParser.prototype = {
         }
 
         return tileMapModel;
+    },
+
+
+    parseActors: function (game, playerPos, ones, twos, threes) {
+        "use strict";
+        var actorData = game.cache.getText("actorData");
+        var rows = actorData.match(/[^\r\n]+/g);
+
+        for (var i = 0; i < rows.length; ++i) {
+            for (var j = 0; j < rows[i].length; ++j) {
+                switch(rows[i][j]) {
+                case "P":
+                    playerPos.x = j * 8;
+                    playerPos.y = i * 8;
+                    break;
+                case "1":
+                    ones.push(new Phaser.Point(j * 8, i * 8));
+                    break;
+                case "2":
+                    twos.push(new Phaser.Point(j * 8, i * 8));
+                    break;
+                case "3":
+                    threes.push(new Phaser.Point(j * 8, i * 8));
+                    break;
+                }
+            }
+        }
     }
 
 };

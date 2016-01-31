@@ -24,6 +24,7 @@ var Player = function (game) {
     this._maxSpeed = 72;
 
     this._animator = null;
+    this._upStillDown = false;
 };
 module.exports = Player;
 Player.prototype = Object.create(Phaser.Group.prototype);
@@ -46,7 +47,7 @@ Player.prototype.init = function () {
     this._movementProperties.OnGround = true;
 
     this._pos = this._movementProperties.Position;
-    this._pos.x = 240;
+    this._pos.x = 216;
     this._pos.y = 136;
     this._velocity = this._movementProperties.Velocity;
 
@@ -114,12 +115,18 @@ Player.prototype.processInput = function (dt) {
             }
         }
         if (this._gameRef.input.keyboard.isDown(Phaser.KeyCode.UP)) {
-            this._animator.CurrentState = "jumping";
-            this._velocity.y = -100;
-            this._movementProperties.OnGround = false;
-            this._jumpTime = 0;
-            this._jumping = true;
-            this._jumpControl = true;
+            if (!this._upStillDown) {
+                this._animator.CurrentState = "jumping";
+                this._velocity.y = -100;
+                this._movementProperties.OnGround = false;
+                this._jumpTime = 0;
+                this._jumping = true;
+                this._jumpControl = true;
+                this._upStillDown = true;
+            }
+        }
+        else {
+            this._upStillDown = false;
         }
     }
     else {
@@ -139,6 +146,7 @@ Player.prototype.processInput = function (dt) {
             else if (this._jumpControl) {
                 if (this._velocity.y < 0) { this._velocity.y *= 0.3; }
                 this._jumpControl = false;
+                this._upStillDown = false;
             }
         }
         else {
