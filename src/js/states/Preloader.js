@@ -19,6 +19,7 @@ Preloader.prototype = {
 
         this.load.image("bg", "../../assets/images/bg.png");
         this.load.image("waves", "../../assets/images/waves.png");
+        this.load.image("whiteScreen", "../../assets/images/whiteScreen.png");
 
         this.load.image("dirt", "../../assets/images/tiles/dirt.png");
         this.load.image("floor", "../../assets/images/tiles/floor.png");
@@ -41,9 +42,13 @@ Preloader.prototype = {
         this.load.spritesheet("dog-green", "../../assets/images/character/dog-green.png", 16, 16);
         this.load.spritesheet("dog-blue", "../../assets/images/character/dog-blue.png", 16, 16);
         this.load.spritesheet("attack", "../../assets/images/character/attack.png", 16, 16, 4);
+        this.load.spritesheet("ninjaStar", "../../assets/images/character/ninjaStar.png", 8, 8);
+        this.load.spritesheet("bomb", "../../assets/images/character/bomb.png", 16, 16);
+        this.load.spritesheet("explosion", "../../assets/images/character/explosion.png", 32, 32, 4);
         this.load.spritesheet("grub", "../../assets/images/character/grub.png", 16, 16);
         this.load.spritesheet("grub2", "../../assets/images/character/grub2.png", 16, 16);
         this.load.spritesheet("grub3", "../../assets/images/character/grub3.png", 16, 16);
+        this.load.spritesheet("fishboss", "../../assets/images/character/fishboss.png", 56, 40);
 
         this.load.bitmapFont("font", "../../assets/fonts/font.png", "../../assets/fonts/font.fnt");
 
@@ -57,6 +62,6 @@ Preloader.prototype = {
 
     create: function () {
         "use strict";
-        this.game.state.start("Game");
+        this.game.state.start("TitleScreen");
     }
 };

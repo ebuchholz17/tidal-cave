@@ -33,17 +33,6 @@ var Player = function (game) {
     this._invincibleMax = 1;
 
     this.InHitStun = false;
-
-    this._xps = [2, 4, 7, 11, 16, 22, 29, 37, 48, 58];
-    this._hps = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
-    this._damages = [1, 2, 4, 7, 11, 16, 22, 29, 37, 48];
-
-    this.HP = 10;
-    this.MaxHP = 10;
-    this.XP = 0;
-    this.NextXP = 2;
-    this.Damage = 1;
-    this.Level = 1;
     var key1 = this.game.input.keyboard.addKey(Phaser.Keyboard.H);
     key1.onDown.add(this.doDamage, this);
 
@@ -51,6 +40,8 @@ var Player = function (game) {
     this._attackTimer = 0;
     this._attackMax = 0.5;
     this.onAttack = new Phaser.Signal();
+    this.onNinjaStar = new Phaser.Signal();
+    this.onBomb = new Phaser.Signal();
     this.onDamage = new Phaser.Signal();
     this.onLevelUp = new Phaser.Signal();
 
@@ -62,9 +53,10 @@ module.exports = Player;
 Player.prototype = Object.create(Phaser.Group.prototype);
 Player.prototype.constructor = Player;
 
-Player.prototype.init = function () {
+Player.prototype.init = function (type) {
     "use strict";
-    this._sprite = new Phaser.Sprite(this._gameRef, 0, 0, "dog-red");
+    this._type = type;
+    this._sprite = new Phaser.Sprite(this._gameRef, 0, 0, type);
     //this._sprite.anchor.setTo(0.53125, 0.53125);
     this._sprite.anchor.setTo(0.5, 0.5);
     this.addChild(this._sprite);
@@ -72,7 +64,6 @@ Player.prototype.init = function () {
     this._movementProperties = new MovementProperties();
     this._movementProperties.BaseSpeed = 10;
     this._movementProperties.OnGround = true;
-    this._movementProperties.UnderWater = true;
 
     this._pos = this._movementProperties.Position;
     this._pos.x = 216;
@@ -96,6 +87,33 @@ Player.prototype.init = function () {
 
     this._hurtBoxOffset = new Phaser.Point(-4, -6);
     this.HurtBox = new Phaser.Rectangle(0, 0, 8, 13);
+
+    if (this._type === "dog-red") {
+        this._xps = [2, 4, 7, 11, 16, 22, 29, 37, 48, 58];
+        this._hps = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+        this._damages = [1, 2, 4, 7, 11, 16, 22, 29, 37, 48];
+        this._attackMax = 0.5;
+    this.Damage = 1;
+    }
+    else if (this._type === "dog-green") {
+        this._xps = [2, 4, 7, 11, 16, 22, 29, 37, 48, 58];
+        this._hps = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+        this._damages = [1, 2, 3, 4, 6, 8, 11, 14, 18, 23];
+        this._attackMax = 0.25;
+    this.Damage = 1;
+    }
+    else if (this._type === "dog-blue") {
+        this._xps = [2, 4, 7, 11, 16, 22, 29, 37, 48, 58];
+        this._hps = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+        this._damages = [3, 5, 8, 13, 20, 30, 41, 55, 70, 90];
+        this._attackMax = 1.25;
+    this.Damage = 3;
+    }
+    this.HP = 10;
+    this.MaxHP = 10;
+    this.XP = 0;
+    this.NextXP = 2;
+    this.Level = 1;
 };
 
 Player.prototype.processInput = function (dt) {
@@ -208,8 +226,15 @@ Player.prototype.processInput = function (dt) {
             else {
                 offset = -16;
             }
-
-            this.onAttack.dispatch(new Phaser.Point(this._pos.x + offset, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            if (this._type === "dog-red") {
+                this.onAttack.dispatch(new Phaser.Point(this._pos.x + offset, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
+            else if (this._type === "dog-green") {
+                this.onNinjaStar.dispatch(new Phaser.Point(this._pos.x + offset/3, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
+            else if (this._type === "dog-blue") {
+                this.onBomb.dispatch(new Phaser.Point(this._pos.x + offset/3, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
         }
     }
     else {
@@ -266,7 +291,15 @@ Player.prototype.processInput = function (dt) {
             else {
                 offset = -16;
             }
-            this.onAttack.dispatch(new Phaser.Point(this._pos.x + offset, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            if (this._type === "dog-red") {
+                this.onAttack.dispatch(new Phaser.Point(this._pos.x + offset, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
+            else if (this._type === "dog-green") {
+                this.onNinjaStar.dispatch(new Phaser.Point(this._pos.x + offset/3, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
+            else if (this._type === "dog-blue") {
+                this.onBomb.dispatch(new Phaser.Point(this._pos.x + offset/3, this._pos.y), this._animator.Facing === "right" ? -1 : 1);
+            }
         }
     }
         

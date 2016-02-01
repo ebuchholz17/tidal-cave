@@ -5,5 +5,7 @@ var MovementProperties = function () {
     this.BaseSpeed = 0;
     this.OnGround = false;
     this.BumpedHead = false;
+    this.UnderWater = false;
+    this.Fish = false;
 };
 module.exports = MovementProperties;
