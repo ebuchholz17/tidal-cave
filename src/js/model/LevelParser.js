@@ -3,7 +3,7 @@ var TileModel = require("./TileModel");
 
 var LevelParser = function () {
 	"use strict";
-    this._unpassableTiles = "Xudlrgp1234";
+    this._unpassableTiles = "Xudlrgp1234nsew";
 };
 module.exports = LevelParser;
 

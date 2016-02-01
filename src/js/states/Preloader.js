@@ -14,8 +14,8 @@ Preloader.prototype = {
         this.game.scale.pageAlignVertically = true;
         this.game.scale.refresh();
 
-        this.load.text("levelData", "../../assets/levels/1.txt");
-        this.load.text("actorData", "../../assets/levels/a.txt");
+        this.load.text("levelData", "../../assets/levels/level.txt");
+        this.load.text("actorData", "../../assets/levels/actors.txt");
 
         this.load.image("bg", "../../assets/images/bg.png");
         this.load.image("waves", "../../assets/images/waves.png");

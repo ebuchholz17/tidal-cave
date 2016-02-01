@@ -26,8 +26,8 @@ Game.prototype = {
     create: function () {
         "use strict";
 
-    this._monsters = [];
-    this._camera = new Phaser.Point(120, 72);
+        this._monsters = [];
+        this._camera = new Phaser.Point(120, 72);
         document.getElementById("game_preloader").style.visibility = "hidden";
         this._gameRef = this.game;
         this._gameRef.stage.smoothed = false;
@@ -69,7 +69,7 @@ Game.prototype = {
 
             monster.ID = id++;
             monster.Damage = 1;
-            monster.HP = 3;
+            monster.HP = 5;
             monster.XP = 1;
         }
         for (i = 0; i < this._twoMonsters.length; ++i) {
@@ -83,8 +83,8 @@ Game.prototype = {
             monster._pos.y = this._twoMonsters[i].y;
 
             monster.ID = id++;
-            monster.Damage = 4;
-            monster.HP = 20;
+            monster.Damage = 6;
+            monster.HP = 25;
             monster.XP = 3;
         }
         for (i = 0; i < this._threeMonsters.length; ++i) {
@@ -98,8 +98,8 @@ Game.prototype = {
             monster._pos.y = this._threeMonsters[i].y;
 
             monster.ID = id++;
-            monster.Damage = 10;
-            monster.HP = 48;
+            monster.Damage = 13;
+            monster.HP = 60;
             monster.XP = 8;
         }
 
@@ -118,6 +118,16 @@ Game.prototype = {
         this._gameContainer.addChild(this._playerLevelText);
         this._gameContainer.addChild(this._playerHPText);
         this._gameContainer.addChild(this._playerXPText);
+
+        this._waveSprite = new Phaser.Sprite(this._gameRef, 0, 0, "waves");
+        this._waveSprite.x = -64;
+        this._waveSprite.y = 112;
+        this._levelContainer.addChild(this._waveSprite);
+
+        this._maxWaterLevel = 560;
+        this._minWaterLevel = 112;
+        this._waterTime = 0;
+        this._currentWaterLevel = 112;
     },
 
     onPlayerAttack: function (playerPos, scale) {
@@ -197,8 +207,8 @@ Game.prototype = {
 
         var flyAwayText = new FlyAwayText(this._gameRef);
         flyAwayText.init("XP: " + monster.XP, 0x00ff00);
-        flyAwayText.x = this._player.x;
-        flyAwayText.y = this._player.y;
+        flyAwayText.x = monster.x;
+        flyAwayText.y = monster.y;
         this._levelContainer.addChild(flyAwayText);
 
         this._player.XP += monster.XP;
@@ -238,7 +248,16 @@ Game.prototype = {
                 }
             }
         }
-        
+
+        this._waterTime += dt;
+        this._currentWaterLevel = this._minWaterLevel + 0.5 * (1+  Math.sin(this._waterTime * 0.1)) * (this._maxWaterLevel - this._minWaterLevel);
+        this._waveSprite.y = this._currentWaterLevel;
+        if (this._player._pos.y > this._currentWaterLevel) {
+            this._player._movementProperties.UnderWater = true;
+        }
+        else {
+            this._player._movementProperties.UnderWater = false;
+        }
 
         this._levelContainer.x = -this._camera.x + 120;
         this._levelContainer.y = -this._camera.y + 72;

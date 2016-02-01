@@ -34,7 +34,7 @@ var Player = function (game) {
 
     this.InHitStun = false;
 
-    this._xps = [0, 2, 4, 7, 11, 16, 22, 29, 37, 48];
+    this._xps = [2, 4, 7, 11, 16, 22, 29, 37, 48, 58];
     this._hps = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
     this._damages = [1, 2, 4, 7, 11, 16, 22, 29, 37, 48];
 
@@ -72,6 +72,7 @@ Player.prototype.init = function () {
     this._movementProperties = new MovementProperties();
     this._movementProperties.BaseSpeed = 10;
     this._movementProperties.OnGround = true;
+    this._movementProperties.UnderWater = true;
 
     this._pos = this._movementProperties.Position;
     this._pos.x = 216;
@@ -234,6 +235,16 @@ Player.prototype.processInput = function (dt) {
         else {
             this._animator.CurrentState = "falling"; 
         }
+        if (this._velocity.y > 0 && this._gameRef.input.keyboard.isDown(Phaser.KeyCode.Z) && this._movementProperties.UnderWater && !this._jumpControl) {
+                this._animator.CurrentState = "jumping";
+                this._velocity.y = -100;
+                this._movementProperties.OnGround = false;
+                this._jumpTime = 0;
+                this._jumping = true;
+                this._jumpControl = true;
+                this._upStillDown = true;
+        }
+
         if (this._gameRef.input.keyboard.isDown(Phaser.KeyCode.LEFT)) {
             this._velocity.x += -this._movementProperties.BaseSpeed * 0.5;
             if (this._velocity.x < -this._maxSpeed) {
@@ -294,6 +305,8 @@ Player.prototype.updateAnimation = function () {
     this._animator.update();
 };
 
+
+
 Player.prototype.doDamage = function (damage) {
     "use strict";
     if (this.Dead) { 
@@ -341,8 +354,8 @@ Player.prototype.levelUp = function() {
     }
     while (newLevel < 10 && newXp >= nextXP); 
     this.XP = newXp;
-    this.NextXP = nextXP;
     this.Level = newLevel;
+    this.NextXP = this._xps[this.Level - 1];
     this.MaxHP = this.HP = this._hps[this.Level - 1];
     this.Damage = this._damages[this.Level - 1];
     this.onLevelUp.dispatch();
