@@ -71,8 +71,6 @@ TitleScreen.prototype = {
     this.key2.onDown.add(this.chooseGreenDog, this);
     this.key3 = this.game.input.keyboard.addKey(Phaser.Keyboard.THREE);
     this.key3.onDown.add(this.chooseBlueDog, this);
-
-        this._gameRef.input.keyboard.onDownCallback = this.startGame.bind(this);
     },
     chooseRedDog: function () {
         "use strict";
@@ -95,7 +93,6 @@ TitleScreen.prototype = {
     this.key1.onDown.remove(this.chooseRedDog, this);
     this.key2.onDown.remove(this.chooseGreenDog, this);
     this.key3.onDown.remove(this.chooseBlueDog, this);
-        this._gameRef.input.keyboard.onDownCallback = null;
         this._gameRef.input.keyboard.reset();
         this.game.state.start("Game");
     }
