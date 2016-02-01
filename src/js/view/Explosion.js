@@ -23,7 +23,7 @@ Explosion.prototype.init = function(pos) {
     hitTimer.start();
 
     var disappearTimer = this._gameRef.time.create(false);
-    disappearTimer.add(200, function () { this.visible = false; }, this);
+    disappearTimer.add(300, function () { this.visible = false; }, this);
     disappearTimer.start();
 };
 

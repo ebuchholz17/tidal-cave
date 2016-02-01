@@ -182,7 +182,7 @@ Game.prototype = {
         attack.x = playerPos.x;
         attack.y = playerPos.y;
         attack.init(playerPos, scale);
-        attack.scale.x = scale;
+        attack.scale.x = -scale;
         this._levelContainer.addChild(attack);
         this._bullets.push(attack);
     },
