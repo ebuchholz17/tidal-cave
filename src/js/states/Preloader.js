@@ -14,6 +14,7 @@ Preloader.prototype = {
         this.game.scale.pageAlignVertically = true;
         this.game.scale.refresh();
 
+        this.load.crossOrigin = "anonymous";
         this.load.text("levelData", "../../assets/levels/level.txt");
         this.load.text("actorData", "../../assets/levels/actors.txt");
 
